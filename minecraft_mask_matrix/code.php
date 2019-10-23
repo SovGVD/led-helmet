@@ -25,10 +25,14 @@ function getCode(&$img, $p) {
     return $r;
 }
 
+function h($d) {
+    return "0x".substr("0000".dechex($d), -2);
+}
 
 function arduinoArray($arr) {
     for ($i = 0; $i < count($arr); $i++) {
-        print "{ ".$arr[$i][0].", ".$arr[$i][1].", ".$arr[$i][2]." }, ";
+        //print $arr[$i][0].", ".$arr[$i][1].", ".$arr[$i][2].", ";
+        print h($arr[$i][0]).", ".h($arr[$i][1]).", ".h($arr[$i][2]).", ";
     }
     print "\n";
 }
@@ -37,4 +41,5 @@ arduinoArray(
     getCode($img, $face)
 );
 
+//imagepng($img, $tmpfname."_done_.png");
 unlink($tmpfname);
